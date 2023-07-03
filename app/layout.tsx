@@ -1,6 +1,6 @@
-import Provider from "@components/Provider";
+import Provider from "@/components/Provider";
 import "./styles/globals.css";
-import Navbar from "@components/Navbar";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "Next.js",
