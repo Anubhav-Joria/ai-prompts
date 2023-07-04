@@ -16,11 +16,6 @@ const CreatePrompt = () => {
   const createPrompt = async (e: any) => {
     e.preventDefault();
     setIsSubmitting(true);
-    console.log({
-      prompt: post.prompt,
-      userId: session?.user?.id,
-      tag: post.tag,
-    });
     try {
       const response = await fetch("/api/prompt/new", {
         method: "POST",
