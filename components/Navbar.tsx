@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
-  const { data: session } : any = useSession();
-
-  console.log("session", session)
+  const { data: session }: any = useSession();
 
   const [providers, setProviders] = useState<any>(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -26,7 +24,7 @@ const Navbar = () => {
         <Image
           src="/assets/images/logo.svg"
           alt="logo"
-          width={30} 
+          width={30}
           height={30}
           className="object-contain"
         />
@@ -41,7 +39,11 @@ const Navbar = () => {
               Create Post
             </Link>
 
-            <button type="button" onClick={() => signOut()} className="outline_btn">
+            <button
+              type="button"
+              onClick={() => signOut()}
+              className="outline_btn"
+            >
               Sign Out
             </button>
 
@@ -57,9 +59,8 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-          {console.log("providers", providers)}
             {providers &&
-              Object.values(providers).map((provider : any) => (
+              Object.values(providers).map((provider: any) => (
                 <button
                   type="button"
                   key={provider.name}
@@ -120,7 +121,7 @@ const Navbar = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((provider : any) => (
+              Object.values(providers).map((provider: any) => (
                 <button
                   type="button"
                   key={provider.name}
