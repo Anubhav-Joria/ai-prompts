@@ -4,13 +4,14 @@ import { NextResponse } from "next/server";
 
 const handler = async (req: any) => {
   const res = await req.json();
-  const { prompt, userId, tag } = res;
+  const { prompt, userId, tag, user } = res;
   await connectToDB();
   try {
     const newPrompt = new Prompts({
       prompt: prompt,
       userId: userId,
       tag: tag,
+      user: user,
     });
     await newPrompt.save();
 
