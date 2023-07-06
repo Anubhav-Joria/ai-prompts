@@ -7,13 +7,11 @@ const PromptCardList = ({ data, handleTagClick }: any) => {
   return (
     <div className="mt-16 prompt_layout">
       {data.map((post: any) => (
-        <>
-          <PromptCard
-            key={post._id}
-            post={post}
-            handleTagClick={handleTagClick}
-          />
-        </>
+        <PromptCard
+          key={post._id}
+          post={post}
+          handleTagClick={handleTagClick}
+        />
       ))}
     </div>
   );
@@ -37,11 +35,12 @@ const Feed = () => {
 
   const filterPrompts = (searchtext: any) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+
     return allPosts.filter(
       (item: any) =>
-        regex.test(item.creator.username) ||
-        regex.test(item.tag) ||
-        regex.test(item.prompt)
+        regex.test(item.user.name) ||
+        regex.test(item.user.tag) ||
+        regex.test(item.user.prompt)
     );
   };
 
