@@ -14,21 +14,8 @@ const promptSchema = new Schema({
     required: [true, "Tag is a Required field"],
   },
   user: {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    image: String,
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    type:Schema.Types.ObjectId,
+    ref:'User',
   },
 });
 
