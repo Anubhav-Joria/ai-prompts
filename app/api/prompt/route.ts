@@ -7,8 +7,7 @@ const handler = async (req: NextRequest) => {
 
   connectToDB();
   try{
-    const prompts = await Prompts.find({});
-    console.log(prompts);
+    const prompts = await Prompts.find({}).populate('user');
     return NextResponse.json({
       status : 200,
       message: "all prompts",

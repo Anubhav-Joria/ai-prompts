@@ -18,8 +18,8 @@ const PromptCard = ({
   const [copied, setCopied] = useState("");
 
   const handleProfileClick = () => {
-    if (post.user.id === session?.user.id) return router.push("/profile");
-    router.push(`/profile/${post.user.id}?name=${post.user.name}`);
+    if (post.user?._id === session?.user?.id) return router.push("/profile");
+    router.push(`/profile/${post.user?._id}`);
   };
 
   const handleCopy = () => {
@@ -36,7 +36,7 @@ const PromptCard = ({
           onClick={handleProfileClick}
         >
           <Image
-            src={post.user.image}
+            src={post?.user?.image}
             alt="user_image"
             width={40}
             height={40}
@@ -45,10 +45,10 @@ const PromptCard = ({
 
           <div className="flex flex-col">
             <h3 className="font-satoshi font-semibold text-gray-900">
-              {post.user.name}
+              {post.user?.name}
             </h3>
             <p className="font-inter text-sm text-gray-500">
-              {post.user.email}
+              {post.user?.email}
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ const PromptCard = ({
         #{post.tag}
       </p>
 
-      {session?.user.id === post.user.id && pathName === "/profile" && (
+      {session?.user?.id === post.user?._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
