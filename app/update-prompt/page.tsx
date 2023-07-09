@@ -1,15 +1,20 @@
 "use client";
 import Form from "@/components/Form";
+import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const UpdatePrompt = () => {
+  const router = useRouter();
+  const { data: session }: any = useSession();
+
+  if (!session) router.push("/");
+
   //when url is /update-prompt?id=77979
   //create a route.js in update-prompt and we can get query parameters using the below code
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
-  const router = useRouter();
   const [post, setPost] = useState<any>();
   const [submitting, setSubmitting] = useState(false);
 
