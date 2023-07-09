@@ -36,12 +36,15 @@ const Feed = () => {
   const filterPrompts = (searchtext: any) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
 
-    return allPosts.filter(
-      (item: any) =>
+    return allPosts.filter((item: any) => {
+      if (
         regex.test(item.user.name) ||
-        regex.test(item.user.tag) ||
-        regex.test(item.user.prompt)
-    );
+        regex.test(item.user.email) ||
+        regex.test(item.tag) ||
+        regex.test(item.prompt)
+      )
+        return item;
+    });
   };
 
   const handleSearchChange = (e: any) => {

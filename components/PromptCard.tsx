@@ -14,7 +14,6 @@ const PromptCard = ({
   const { data: session }: any = useSession();
   const pathName = usePathname();
   const router = useRouter();
-  console.log("post", post)
 
   const [copied, setCopied] = useState("");
 

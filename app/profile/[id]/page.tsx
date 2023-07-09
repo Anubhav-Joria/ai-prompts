@@ -3,15 +3,15 @@ import React, { useEffect, useState } from "react";
 import Profile from "@/components/Profile";
 const UserProfile = ({ params }: any) => {
   const [userPosts, setUserPosts] = useState<any>([]);
-  const fetchPosts = async () => {
-    const response = await fetch(`/api/users/${params.id}/posts`);
-    const data = await response.json();
-    setUserPosts(data);
-  };
 
   const handleTagClick = () => {};
 
   useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch(`/api/users/${params.id}/posts`);
+      const data = await response.json();
+      setUserPosts(data);
+    };
     fetchPosts();
   }, [params.id]);
 
