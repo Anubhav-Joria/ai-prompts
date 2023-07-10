@@ -5,10 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const UpdatePrompt = () => {
-  const router = useRouter();
+  const router: any = useRouter();
   const { data: session }: any = useSession();
-
-  if (!session) router.push("/");
 
   //when url is /update-prompt?id=77979
   //create a route.js in update-prompt and we can get query parameters using the below code
@@ -17,12 +15,6 @@ const UpdatePrompt = () => {
 
   const [post, setPost] = useState<any>();
   const [submitting, setSubmitting] = useState(false);
-
-  const fetchPromptData = async () => {
-    const data = await fetch(`api/update-prompt/${id}`);
-    const parseData = await data.json();
-    setPost(parseData);
-  };
 
   const editPrompt = async (e: any) => {
     e.preventDefault();
@@ -44,6 +36,13 @@ const UpdatePrompt = () => {
   };
 
   useEffect(() => {
+    if (!session) router.push("/");
+
+    const fetchPromptData = async () => {
+      const data = await fetch(`api/update-prompt/${id}`);
+      const parseData = await data.json();
+      setPost(parseData);
+    };
     fetchPromptData();
   }, []);
 
