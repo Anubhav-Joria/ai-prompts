@@ -9,9 +9,11 @@ const MyProfile = () => {
   const router = useRouter();
   const { data: session }: any = useSession();
 
-  if (!session) router.push("/");
-
   const [myPosts, setMyPosts] = useState([]);
+
+  useEffect(() => {
+    if (!session) router.push("/");
+  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
